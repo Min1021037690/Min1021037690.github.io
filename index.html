@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 canvas水波纹动画特效</title>
+  <script src="./js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery.waterrippleeffect.min.js"></script>
+  <link type="text/css" rel="styleSheet" href="./init.css" />
+  <link type="text/css" rel="styleSheet" href="./index.css" />
+  <script>
+    $(document).ready(function () {
+      $('#preloaderDiv').delay(1000).fadeTo(1000, 0, function () {
+        $(this).css('display', 'none');
+      });
+      init();
+
+      $('.huidawenti').click(function () {
+        window.open('https://www.wenjuan.com/s/UZBZJvgsUe/#')
+      })
+      $('.jutiwenti').click(function () {
+        window.open('https://www.wenjuan.com/s/UZBZJvgsUe/#')
+      })
+      $('.ccJKOJIAn_A').click(function () {
+        window.open('https://youtu.be/ccJKOJIAn_A')
+      })
+      function init() {
+        var clientWidth = document.documentElement.clientWidth //==> 可见区域宽度
+        var clientHeight = clientWidth * 1980 / 1440
+        var settings = {
+          image: './img/bg.jpg',//image path
+          rippleRadius: 3,//radius of the ripple
+          width: clientWidth,//width
+          height: clientHeight,//height
+          delay: 1,//if auto param === true. 1 === 1 second delay for animation
+          auto: true//if auto param === true, animation starts on it´s own
+        };
+        var holderBox = {
+          holder: document.getElementById('holder'),
+          holder2: document.getElementById('holder2'),
+          holder3: document.getElementById('holder3'),
+          // holder4: document.getElementById('holder4'),
+          // holder5:document.getElementById('holder5')
+        }
+        Object.keys(holderBox).forEach(key => {
+          console.log('holderBox[key]=', holderBox[key])
+          var waterRippleEffect = new WaterRippleEffect(holderBox[key], settings);
+          holderBox[key].style.cursor = 'pointer';
+          holderBox[key].addEventListener('click', function (e) {
+            var mouseX = e.layerX;
+            var mouseY = e.layerY;
+            waterRippleEffect.disturb(mouseX, mouseY);
+          });
+          holderBox[key].addEventListener('mousemove', function (e) {
+            var mouseX = e.layerX;
+            var mouseY = e.layerY;
+            waterRippleEffect.disturb(mouseX, mouseY);
+          });
+        })
+      };
+    });
+
+  </script>
+</head>
+
+<body>
+  <div class="jq22-container">
+    <div class="container">
+      <img class="posi headerbg" src="./img/headerbg.png" alt="">
+      <img class="posi chuanglian_left" src="./img/chuanglian_left.png" alt="">
+      <img class="posi chuanglian_right" src="./img/chuanglian_right.png" alt="">
+      <img class="posi yundongmianbao" src="./img/yundongmianbao.png" alt="">
+      <img class="posi break" src="./img/break.gif" alt="">
+      <img class="posi xiyiji" src="./img/xiyiji.gif" alt="">
+      <img class="posi xiyijibg" src="./img/xiyijibg.gif" alt="">
+      <img class="posi xiyijiqian" src="./img/xiyijiqian.png" alt="">
+      <img class="posi xiyijihou" src="./img/xiyijihou.png" alt="">
+      <img class="posi headerTitle" src="./img/headerTitle.png" alt="">
+      <img class="posi xiyijilvse" src="./img/xiyijilvse.png" alt="">
+      <img class="posi bg_left" src="./img/bg_left.png" alt="">
+      <img class="posi bg_right" src="./img/bg_right.png" alt="">
+      <img class="posi hudiezi" src="./img/hudiezi.png" alt="">
+      <img class="posi yaopiandeng" src="./img/yaopiandeng.gif" alt="">
+      <img class="posi bingxiangpiaoremn" src="./img/bingxiangpiaoremn.gif" alt="">
+      <img class="posi bingxiangyouce" src="./img/bingxiangyouce.gif" alt="">
+      <img class="posi our-new-body" src="./img/our-new-body.png" alt="">
+      <video class="posi ccJKOJIAn_A" poster="./img/videoImg.png" controls>
+        <source src="./img/shoujishiping.mp4" type="video/mp4">
+      </video>
+      <video class="posi ccJKOJIAn_A" poster="./img/videoImg.png" object-fit='cover'
+      src="./img/shoujishiping.mp4"></video>
+      <!-- <video class="posi ccJKOJIAn_A"  object-fit='cover'
+        src="./img/shoujishiping.mp4"></video> -->
+      <img class="posi shipingzhoubian" src="./img/shipingzhoubian.png" alt="">
+      <img class="posi lajitongludeng" src="./img/lajitongludeng.png" alt="">
+      <img class="posi yueliang" src="./img/yueliang.gif" alt="">
+      <img class="posi yuelianggif" src="./img/yuelianggif.png" alt="">
+      <img class="posi whitestone" src="./img/whitestone.gif" alt="">
+      <img class="posi question" src="./img/question.png" alt="">
+      <img class="posi jutiwenti" src="./img/jutiwenti.png" alt="">
+      <img class="posi huidawenti" src="./img/huidawenti.png" alt="">
+      <img class="posi xiaduanshou" src="./img/xiaduanshou.png" alt="">
+      <img class="posi tiaodonglian" src="./img/tiaodonglian.gif" alt="">
+
+      <div class="notice-con">
+        <div class="notice-main">
+          <span class="notice">
+            <span>WHEN I PUT DIWN MY BODY</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="holderbox">
+        <div class="holder" id='holder' style='width:100vw;display: block;'></div>
+        <div class="holder" id='holder2' style='width:100vw;display: block;'></div>
+        <div class="holder" id='holder3' style='width:100vw;display: block;'></div>
+        <!-- <div class="holder" id='holder4' style='width:100vw;display: block;'></div> -->
+        <!--<div  class="holder" id='holder5' style='width:100vw;display: block;'></div> -->
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
